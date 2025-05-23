@@ -6,8 +6,13 @@
 #include <iostream>     // terminal input and output classes and objects
 
 // write the class here
+class Manners {
+ public:
+  Manners() { std::cout << "hello" << '\n'; }
+  ~Manners() { std::cout << "bye" << '\n'; }
+};
 
 int main() {
   // create a class object here
-
+  Manners good;
 }

@@ -6,3 +6,5 @@ exceptions/a.out.dSYM/Contents/Info.plist
 exceptions/a.out.dSYM/Contents/Resources/Relocations/x86_64/a.out.yml
 streams/myTest.html
 functions/bluetooth_solution.cpp
+.vscode/settings.json
+.vscode/tasks.json
