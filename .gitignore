@@ -11,3 +11,5 @@ pointers/test3.cpp
 classes/assign01.cpp
 classes/assign02.cpp
 classes/assign03.cpp
+.vscode/settings.json
+.vscode/tasks.json
