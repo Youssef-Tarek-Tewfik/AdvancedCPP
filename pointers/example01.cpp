@@ -9,6 +9,8 @@ class Check {
   bool isThisMe(Check *c) { return this == c; }
 };
 
+
+
 int main() {
   Check a;  // a is an object of class Check
   Check *b = &a;  // assign address of a to pointer b to object of class Check
