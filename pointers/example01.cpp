@@ -4,11 +4,15 @@
 #include <iostream>
 
 // write the class Check here
+class Check {
+ public:
+  bool isThisMe(Check *c) { return this == c; }
+};
 
 int main() {
   Check a;  // a is an object of class Check
   Check *b = &a;  // assign address of a to pointer b to object of class Check
-  if ( b->isThisMe( &a ) ) {
+  if (b->isThisMe(&a)) {
     std::cout << "&a is b \n";
   }
 }

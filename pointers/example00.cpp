@@ -12,6 +12,12 @@ int main(int argc, char *argv[]) {
 
     // add code to create an array of length size, and fill it with increasing
     // numbers from 1 till size, display these, and then delete the array
-
+    int *const array = new int[size];
+    for (int i = 0; i < size; ++i) {
+      array[i] = i + 1;
+      std::cout << array[i] << " ";
+    }
+    std::cout << std::endl;
+    delete[] array;
   }
 }
