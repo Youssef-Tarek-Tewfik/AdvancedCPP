@@ -14,3 +14,5 @@ classes/assign03.cpp
 .vscode/settings.json
 .vscode/tasks.json
 exceptions/a.out.dSYM/Contents/Resources/Relocations/aarch64/a.out.yml
+streams/.a.out.~a06d7f29
+streams/example00
