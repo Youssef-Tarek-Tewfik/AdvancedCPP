@@ -1,10 +1,12 @@
 /** Define the class' methods below so that the main function makes sense */
 #include <iostream>     // terminal output
 #include <functional>     // use std::function to pass functions as parameter
+#include <cstdint>
 
 class NumberSequence {  // class for sequence of whole, positive numbers
  public:
   NumberSequence(uint16_t length = 10);
+  ~NumberSequence();
   // apply the function func() to all numbers:
   void forEach(std::function<uint16_t(uint16_t)> func);
   void print() const;  // print all numbers to console
@@ -14,14 +16,34 @@ class NumberSequence {  // class for sequence of whole, positive numbers
 };
 
 // define all NumberSequence methods here
-//
+NumberSequence::NumberSequence(uint16_t length) : length(length) {
+  seq = new uint16_t[length];
+  for (uint16_t i = 0; i < length; ++i) {
+    seq[i] = i;
+  }
+}
+NumberSequence::~NumberSequence() {
+  delete[] seq;
+  seq = NULL;
+}
+void NumberSequence::forEach(std::function<uint16_t(uint16_t)> func) {
+  for (uint16_t i = 0; i < length; ++i) {
+    seq[i] = func(seq[i]);
+  }
+}
+void NumberSequence::print() const {
+  for (uint16_t i = 0; i < length; ++i) {
+    std::cout << seq[i] << ' ';
+  }
+  std::cout << '\n';
+}
 
 uint16_t times2(uint16_t n) { return n*2; }
 
 int main() {
   NumberSequence s;
   s.print();
-  s.forEach( &times2 ); // apply the function times2 to all numbers
+  s.forEach( times2 ); // apply the function times2 to all numbers
   s.print();
   return 0;
 }

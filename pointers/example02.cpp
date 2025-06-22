@@ -4,6 +4,7 @@
 
 #include <iostream>  // for writing to the console
 #include <span>
+#include <cstdint>
 
 //--- GPSTrace uses this class for single GPS coordinates: ---------
 class GPSCoord {  // GPS coordinate class
@@ -39,6 +40,7 @@ void GPSCoord::print() const {
 class GPSTrace {  // class for a GPS trace
  public:
   GPSTrace(uint16_t numPoints);
+  GPSTrace(GPSTrace const &source);
   ~GPSTrace();
   // add a new point to trace at position pos:
   void setPoint(GPSCoord newPoint, uint16_t pos);  // set a GPSCoord
@@ -50,6 +52,11 @@ class GPSTrace {  // class for a GPS trace
 
 GPSTrace::GPSTrace(uint16_t numpoints): numPoints(numpoints) {
   points = new GPSCoord[numPoints];
+}
+GPSTrace::GPSTrace(const GPSTrace &source) : GPSTrace::GPSTrace(source.numPoints) {
+  for (int i = 0; i < numPoints; ++i) {
+    points[i] = source.points[i];
+  }
 }
 GPSTrace::~GPSTrace() {
   delete[] points; points = NULL; numPoints = 0;
@@ -72,5 +79,9 @@ int main() {
     point.setElevation(i*5.6);
     t.setPoint(point, i);
   }
+
+  GPSTrace copy(t);
+  copy.print();
+  std::cout << (&t == &copy) << '\n';
   return t.print();
 }
