@@ -3,7 +3,7 @@
 class Element {  // class representing graphic element
  public:
   Element(double x, double y) : x(x), y(y) {}
- private:
+ protected:
   double x, y;  // position of graphic element
 };
 
@@ -17,6 +17,9 @@ class Rectangle : public Element {  // class representing a rectangle
 class Square : public Rectangle {  // class representing a square
  public:
   Square(double x, double y, double a) : Rectangle(x, y, a, a) {}
+  void print() {
+    std::cout << x << ',' << y << '\n';
+  }
 };
 
 int main() {
